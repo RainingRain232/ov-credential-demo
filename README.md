@@ -1,6 +1,8 @@
 # OV-credential demo (online versie)
 
-Een statische, hostbare versie van het **OV Credential Portaal**: een assistent die een student helpt een OV-credential aan te vragen, met realtime zichtbare guardrails, een digitale wallet en een medewerker die de aanvraag beoordeelt.
+**Live:** https://rainingrain232.github.io/ov-credential-demo/
+
+Een statische versie van het **OV Credential Portaal**: een assistent die een student helpt een OV-credential aan te vragen, met realtime zichtbare guardrails, een digitale wallet en een medewerker die de aanvraag beoordeelt.
 
 Deze versie draait **volledig in de browser**: geen Docker-containers, geen backend en geen taalmodel. Ze is bedoeld om online te zetten, zodat iedereen de flow kan doorlopen.
 
@@ -41,6 +43,8 @@ npm start          # out/ serveren
 ```
 
 ## Hosten
+
+De site wordt automatisch gepubliceerd op GitHub Pages bij elke push naar `main` (workflow `.github/workflows/pages.yml`: tests, build, deploy).
 
 `npm run build` maakt een map `out/` met alleen statische bestanden. Die kun je op elke statische host zetten (Netlify, Vercel, Cloudflare Pages, GitHub Pages, een gewone webserver).
 
