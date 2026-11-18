@@ -1,0 +1,32 @@
+{
+ "result": {
+  "eligible": true,
+  "route": "over18",
+  "routeLabel": "Studenten-OV Route (18 of ouder)",
+  "credentialType": "StudentOVCredential",
+  "routeSteps": [
+   {
+    "ruleId": "rule-age-over-18",
+    "title": "Leeftijd 18 of ouder",
+    "credentialType": "BirthCertificateCredential",
+    "claimName": "isOver18",
+    "passed": true
+   },
+   {
+    "ruleId": "rule-eu-citizenship",
+    "title": "EU-burgerschap",
+    "credentialType": "EUCitizenshipCredential",
+    "claimName": "isEUCitizen",
+    "passed": true
+   },
+   {
+    "ruleId": "rule-education-enrollment",
+    "title": "Inschrijving onderwijs",
+    "credentialType": "UniversityEnrollmentCredential",
+    "claimName": "isEnrolledAtUniversity",
+    "passed": true
+   }
+  ],
+  "checkedAt": "2026-11-18T16:50:08.250Z"
+ }
+}

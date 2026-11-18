@@ -1,0 +1,1021 @@
+[
+ {
+  "label": "All eligibility rules",
+  "query": "PREFIX transport: <https://transport.example.nl/ontology#>\nSELECT ?rule ?title ?description ?credentialType ?order\nWHERE {\n  ?rule a transport:EligibilityRule ;\n        transport:title ?title ;\n        transport:description ?description ;\n        transport:credentialType ?credentialType ;\n        transport:order ?order .\n}\nORDER BY ?order",
+  "result": {
+   "head": {
+    "vars": [
+     "rule",
+     "title",
+     "description",
+     "credentialType",
+     "order"
+    ]
+   },
+   "results": {
+    "bindings": [
+     {
+      "rule": {
+       "type": "uri",
+       "value": "https://transport.example.nl/ontology#EligibilityRule/age-over-18"
+      },
+      "title": {
+       "type": "literal",
+       "value": "Leeftijd 18 of ouder"
+      },
+      "description": {
+       "type": "literal",
+       "value": "De aanvrager moet 18 jaar of ouder zijn."
+      },
+      "credentialType": {
+       "type": "literal",
+       "value": "BirthCertificateCredential"
+      },
+      "order": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "1"
+      }
+     },
+     {
+      "rule": {
+       "type": "uri",
+       "value": "https://transport.example.nl/ontology#EligibilityRule/age-under-18"
+      },
+      "title": {
+       "type": "literal",
+       "value": "Leeftijd onder 18"
+      },
+      "description": {
+       "type": "literal",
+       "value": "De aanvrager moet jonger zijn dan 18 jaar."
+      },
+      "credentialType": {
+       "type": "literal",
+       "value": "BirthCertificateCredential"
+      },
+      "order": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "1"
+      }
+     },
+     {
+      "rule": {
+       "type": "uri",
+       "value": "https://transport.example.nl/ontology#EligibilityRule/eu-citizenship"
+      },
+      "title": {
+       "type": "literal",
+       "value": "EU-burgerschap"
+      },
+      "description": {
+       "type": "literal",
+       "value": "De aanvrager moet burger zijn van een EU-lidstaat (EU-reisrichtlijn 2023/44)."
+      },
+      "credentialType": {
+       "type": "literal",
+       "value": "EUCitizenshipCredential"
+      },
+      "order": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "2"
+      }
+     },
+     {
+      "rule": {
+       "type": "uri",
+       "value": "https://transport.example.nl/ontology#EligibilityRule/education-enrollment"
+      },
+      "title": {
+       "type": "literal",
+       "value": "Inschrijving onderwijs"
+      },
+      "description": {
+       "type": "literal",
+       "value": "De aanvrager moet momenteel ingeschreven zijn bij een erkende onderwijsinstelling."
+      },
+      "credentialType": {
+       "type": "literal",
+       "value": "UniversityEnrollmentCredential"
+      },
+      "order": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "3"
+      }
+     }
+    ]
+   }
+  }
+ },
+ {
+  "label": "Rule set metadata",
+  "query": "PREFIX transport: <https://transport.example.nl/ontology#>\nSELECT ?source ?version ?lastUpdated ?credentialName\nWHERE {\n  ?ruleset a transport:RuleSet ;\n           transport:source ?source ;\n           transport:version ?version ;\n           transport:lastUpdated ?lastUpdated ;\n           transport:credentialName ?credentialName .\n}",
+  "result": {
+   "head": {
+    "vars": [
+     "source",
+     "version",
+     "lastUpdated",
+     "credentialName"
+    ]
+   },
+   "results": {
+    "bindings": [
+     {
+      "source": {
+       "type": "literal",
+       "value": "NationalPublicTransportAuthority"
+      },
+      "version": {
+       "type": "literal",
+       "value": "3.0.0"
+      },
+      "lastUpdated": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#dateTime",
+       "value": "2026-03-17T10:00:00Z"
+      },
+      "credentialName": {
+       "type": "literal",
+       "value": "OVCredential"
+      }
+     }
+    ]
+   }
+  }
+ },
+ {
+  "label": "Required credentials",
+  "query": "PREFIX transport: <https://transport.example.nl/ontology#>\nSELECT ?title ?credentialType ?requiredClaim\nWHERE {\n  ?rule a transport:EligibilityRule ;\n        transport:title ?title ;\n        transport:credentialType ?credentialType ;\n        transport:requiredClaim ?requiredClaim ;\n        transport:isRequired true .\n}\nORDER BY ?title",
+  "result": {
+   "head": {
+    "vars": [
+     "title",
+     "credentialType",
+     "requiredClaim"
+    ]
+   },
+   "results": {
+    "bindings": [
+     {
+      "title": {
+       "type": "literal",
+       "value": "EU-burgerschap"
+      },
+      "credentialType": {
+       "type": "literal",
+       "value": "EUCitizenshipCredential"
+      },
+      "requiredClaim": {
+       "type": "literal",
+       "value": "isEUCitizen"
+      }
+     },
+     {
+      "title": {
+       "type": "literal",
+       "value": "Inschrijving onderwijs"
+      },
+      "credentialType": {
+       "type": "literal",
+       "value": "UniversityEnrollmentCredential"
+      },
+      "requiredClaim": {
+       "type": "literal",
+       "value": "isEnrolledAtUniversity"
+      }
+     },
+     {
+      "title": {
+       "type": "literal",
+       "value": "Leeftijd 18 of ouder"
+      },
+      "credentialType": {
+       "type": "literal",
+       "value": "BirthCertificateCredential"
+      },
+      "requiredClaim": {
+       "type": "literal",
+       "value": "isOver18"
+      }
+     },
+     {
+      "title": {
+       "type": "literal",
+       "value": "Leeftijd onder 18"
+      },
+      "credentialType": {
+       "type": "literal",
+       "value": "BirthCertificateCredential"
+      },
+      "requiredClaim": {
+       "type": "literal",
+       "value": "isUnder18"
+      }
+     }
+    ]
+   }
+  }
+ },
+ {
+  "label": "Count by RDF type",
+  "query": "SELECT ?type (COUNT(*) AS ?count)\nWHERE { ?s a ?type }\nGROUP BY ?type\nORDER BY DESC(?count)",
+  "result": {
+   "head": {
+    "vars": [
+     "type",
+     "count"
+    ]
+   },
+   "results": {
+    "bindings": [
+     {
+      "type": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#StudyFinanceRule"
+      },
+      "count": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "6"
+      }
+     },
+     {
+      "type": {
+       "type": "uri",
+       "value": "https://transport.example.nl/ontology#EligibilityRule"
+      },
+      "count": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "4"
+      }
+     },
+     {
+      "type": {
+       "type": "uri",
+       "value": "https://transport.example.nl/ontology#OVRoute"
+      },
+      "count": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "2"
+      }
+     },
+     {
+      "type": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#RuleSet"
+      },
+      "count": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "1"
+      }
+     },
+     {
+      "type": {
+       "type": "uri",
+       "value": "https://transport.example.nl/ontology#RuleSet"
+      },
+      "count": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "1"
+      }
+     }
+    ]
+   }
+  }
+ },
+ {
+  "label": "All triples (limit 50)",
+  "query": "SELECT ?s ?p ?o\nWHERE { ?s ?p ?o }\nORDER BY ?s ?p\nLIMIT 50",
+  "result": {
+   "head": {
+    "vars": [
+     "s",
+     "p",
+     "o"
+    ]
+   },
+   "results": {
+    "bindings": [
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/age"
+      },
+      "p": {
+       "type": "uri",
+       "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      },
+      "o": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#StudyFinanceRule"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/age"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#credentialType"
+      },
+      "o": {
+       "type": "literal",
+       "value": "BirthCertificateCredential"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/age"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#description"
+      },
+      "o": {
+       "type": "literal",
+       "value": "De aanvrager is 18 jaar of ouder en jonger dan 30 jaar bij aanvang van de studiefinanciering."
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/age"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#isRequired"
+      },
+      "o": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+       "value": "true"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/age"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#legalBasis"
+      },
+      "o": {
+       "type": "literal",
+       "value": "Wet studiefinanciering 2000, hoofdstuk 2 — Leeftijd"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/age"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#order"
+      },
+      "o": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "1"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/age"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#requiredClaim"
+      },
+      "o": {
+       "type": "literal",
+       "value": "isOver18 = true ∧ isOver30 = false"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/age"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#ruleId"
+      },
+      "o": {
+       "type": "literal",
+       "value": "sf-age-18-30"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/age"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#title"
+      },
+      "o": {
+       "type": "literal",
+       "value": "Leeftijd 18 tot 30 jaar"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/enrollment"
+      },
+      "p": {
+       "type": "uri",
+       "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      },
+      "o": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#StudyFinanceRule"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/enrollment"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#credentialType"
+      },
+      "o": {
+       "type": "literal",
+       "value": "UniversityEnrollmentCredential"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/enrollment"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#description"
+      },
+      "o": {
+       "type": "literal",
+       "value": "De aanvrager staat ingeschreven voor een voltijd of duale opleiding aan een erkende hogeschool of universiteit."
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/enrollment"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#isRequired"
+      },
+      "o": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+       "value": "true"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/enrollment"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#legalBasis"
+      },
+      "o": {
+       "type": "literal",
+       "value": "Wet studiefinanciering 2000, hoofdstuk 2 — Opleiding"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/enrollment"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#order"
+      },
+      "o": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "3"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/enrollment"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#requiredClaim"
+      },
+      "o": {
+       "type": "literal",
+       "value": "isEnrolledAtUniversity = true"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/enrollment"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#ruleId"
+      },
+      "o": {
+       "type": "literal",
+       "value": "sf-enrollment"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/enrollment"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#sameAsRule"
+      },
+      "o": {
+       "type": "literal",
+       "value": "rule-education-enrollment"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/enrollment"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#title"
+      },
+      "o": {
+       "type": "literal",
+       "value": "Inschrijving voltijd of duaal hbo/wo"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/human-review"
+      },
+      "p": {
+       "type": "uri",
+       "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      },
+      "o": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#StudyFinanceRule"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/human-review"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#credentialType"
+      },
+      "o": {
+       "type": "literal",
+       "value": "—"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/human-review"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#description"
+      },
+      "o": {
+       "type": "literal",
+       "value": "Een geautomatiseerd besluit wordt altijd gecontroleerd door een medewerker van DUO voordat de credential wordt uitgegeven."
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/human-review"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#isRequired"
+      },
+      "o": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+       "value": "true"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/human-review"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#legalBasis"
+      },
+      "o": {
+       "type": "literal",
+       "value": "AVG artikel 22 — Geautomatiseerde besluitvorming"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/human-review"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#order"
+      },
+      "o": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "6"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/human-review"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#requiredClaim"
+      },
+      "o": {
+       "type": "literal",
+       "value": "goedkeuring medewerker"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/human-review"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#ruleId"
+      },
+      "o": {
+       "type": "literal",
+       "value": "sf-human-review"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/human-review"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#title"
+      },
+      "o": {
+       "type": "literal",
+       "value": "Menselijke beoordeling"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/nationality"
+      },
+      "p": {
+       "type": "uri",
+       "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      },
+      "o": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#StudyFinanceRule"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/nationality"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#credentialType"
+      },
+      "o": {
+       "type": "literal",
+       "value": "EUCitizenshipCredential"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/nationality"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#description"
+      },
+      "o": {
+       "type": "literal",
+       "value": "De aanvrager heeft de Nederlandse nationaliteit of is EU-burger met een gelijkgestelde verblijfsstatus."
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/nationality"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#isRequired"
+      },
+      "o": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+       "value": "true"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/nationality"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#legalBasis"
+      },
+      "o": {
+       "type": "literal",
+       "value": "Wet studiefinanciering 2000, hoofdstuk 2 — Nationaliteit"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/nationality"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#order"
+      },
+      "o": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "2"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/nationality"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#requiredClaim"
+      },
+      "o": {
+       "type": "literal",
+       "value": "isEUCitizen = true"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/nationality"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#ruleId"
+      },
+      "o": {
+       "type": "literal",
+       "value": "sf-nationality"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/nationality"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#sameAsRule"
+      },
+      "o": {
+       "type": "literal",
+       "value": "rule-eu-citizenship"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/nationality"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#title"
+      },
+      "o": {
+       "type": "literal",
+       "value": "Nationaliteit"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/parental-income"
+      },
+      "p": {
+       "type": "uri",
+       "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      },
+      "o": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#StudyFinanceRule"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/parental-income"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#credentialType"
+      },
+      "o": {
+       "type": "literal",
+       "value": "Belastingdienst — verzamelinkomen ouders"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/parental-income"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#description"
+      },
+      "o": {
+       "type": "literal",
+       "value": "De aanvullende beurs hangt af van het verzamelinkomen van de ouders. DUO vraagt dit op bij de Belastingdienst. Geen voorwaarde voor de basisbeurs."
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/parental-income"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#isRequired"
+      },
+      "o": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+       "value": "false"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/parental-income"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#legalBasis"
+      },
+      "o": {
+       "type": "literal",
+       "value": "Wet studiefinanciering 2000, hoofdstuk 3 — Aanvullende beurs"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/parental-income"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#order"
+      },
+      "o": {
+       "type": "literal",
+       "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+       "value": "5"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/parental-income"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#requiredClaim"
+      },
+      "o": {
+       "type": "literal",
+       "value": "verzamelinkomen < inkomensgrens"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/parental-income"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#ruleId"
+      },
+      "o": {
+       "type": "literal",
+       "value": "sf-parental-income"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/parental-income"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#title"
+      },
+      "o": {
+       "type": "literal",
+       "value": "Inkomen ouders (aanvullende beurs)"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/residence"
+      },
+      "p": {
+       "type": "uri",
+       "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+      },
+      "o": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#StudyFinanceRule"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/residence"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#credentialType"
+      },
+      "o": {
+       "type": "literal",
+       "value": "ResidenceAddressCredential"
+      }
+     },
+     {
+      "s": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#Rule/residence"
+      },
+      "p": {
+       "type": "uri",
+       "value": "https://duo.example.nl/ontology#description"
+      },
+      "o": {
+       "type": "literal",
+       "value": "Voor de uitwonende basisbeurs moet de aanvrager op een ander adres dan de ouders staan ingeschreven in de BRP."
+      }
+     }
+    ]
+   }
+  }
+ }
+]

@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    height: 100%;
+    background-color: #0f172a;
+    color: #e2e8f0;
+  }
+
+  /* Smoother font rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 9999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+}
+
+/* Glass-morphism utility */
+@layer utilities {
+  .glass {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .glass-light {
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+/* Subtle gradient border effect */
+@layer utilities {
+  .glow-border {
+    box-shadow: inset 0 1px 0 0 rgba(148, 163, 184, 0.06);
+  }
+}
+
+/* Animate checkbox toggles */
+input[type="checkbox"] {
+  transition: all 0.15s ease;
+}
+
+/* ── DUO Government Theme ─────────────────────────────────────────────────── */
+/* Orange top stripe, characteristic of Dutch government sites */
+[data-duo="true"]::before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: #e17000;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Page background */
+[data-duo="true"] {
+  background-color: #eef3f8 !important;
+  padding-top: 4px;
+}
+
+/* Header → DUO navy */
+[data-duo="true"] header {
+  background: #003082 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 2px solid #001f5c !important;
+}
+[data-duo="true"] header h1,
+[data-duo="true"] header p,
+[data-duo="true"] header span { color: rgba(255,255,255,0.9) !important; }
+[data-duo="true"] header button { color: rgba(255,255,255,0.65) !important; }
+[data-duo="true"] header .bg-slate-800\/60 {
+  background: rgba(255,255,255,0.1) !important;
+  border-color: rgba(255,255,255,0.15) !important;
+}
+/* Active panel toggle buttons in header */
+[data-duo="true"] header button[class*="bg-emerald"],
+[data-duo="true"] header button[class*="bg-indigo"],
+[data-duo="true"] header button[class*="bg-cyan"],
+[data-duo="true"] header button[class*="bg-amber"] {
+  background: rgba(255,255,255,0.2) !important;
+  color: white !important;
+}
+/* DUO button itself in duo mode */
+[data-duo="true"] header button[class*="bg-\[#e17000\]"] {
+  color: white !important;
+}
+
+/* Main panel containers (all have glow-border) */
+[data-duo="true"] .glow-border {
+  background: #ffffff !important;
+  border-color: #c5d5e8 !important;
+  box-shadow: 0 1px 4px rgba(0,48,130,0.06) !important;
+}
+
+/* Inner card/surface backgrounds */
+[data-duo="true"] .bg-slate-900\/70 { background-color: #ffffff !important; }
+[data-duo="true"] .bg-slate-900\/40 { background-color: #f7fafc !important; }
+[data-duo="true"] .bg-slate-900\/20 { background-color: #f7fafc !important; }
+[data-duo="true"] .bg-slate-800\/60 { background-color: #eef3f8 !important; }
+[data-duo="true"] .bg-slate-800\/50 { background-color: #eef3f8 !important; }
+[data-duo="true"] .bg-slate-800\/40 { background-color: #f0f4f8 !important; }
+[data-duo="true"] .bg-slate-800\/30 { background-color: #f5f8fb !important; }
+[data-duo="true"] .bg-slate-800    { background-color: #e8eef6 !important; }
+
+/* Borders */
+[data-duo="true"] .border-slate-800   { border-color: #c5d5e8 !important; }
+[data-duo="true"] .border-slate-700\/50 { border-color: #d0dce8 !important; }
+[data-duo="true"] .border-slate-700\/40 { border-color: #d0dce8 !important; }
+[data-duo="true"] .border-slate-700\/30 { border-color: #dce6f0 !important; }
+[data-duo="true"] .border-slate-700\/20 { border-color: #e5eef7 !important; }
+
+/* Text colours */
+[data-duo="true"] .text-slate-100 { color: #1a1a2e !important; }
+[data-duo="true"] .text-slate-200 { color: #2a2a3d !important; }
+[data-duo="true"] .text-slate-300 { color: #3d4a5c !important; }
+[data-duo="true"] .text-slate-400 { color: #5e6875 !important; }
+[data-duo="true"] .text-slate-500 { color: #7a8694 !important; }
+[data-duo="true"] .text-slate-600 { color: #a0aec0 !important; }
+
+/* Panel section headers (uppercase tracking-widest labels) */
+[data-duo="true"] h2 .text-indigo-400 { color: #003082 !important; }
+[data-duo="true"] h2 .text-cyan-400   { color: #01689b !important; }
+[data-duo="true"] h2 .text-amber-400  { color: #e17000 !important; }
+
+/* Scrollbars */
+[data-duo="true"] .scrollbar-thin { scrollbar-color: #c5d5e8 #f0f4f8; }
+[data-duo="true"] .scrollbar-thin::-webkit-scrollbar-thumb { background: #c5d5e8 !important; }
+[data-duo="true"] .scrollbar-thin::-webkit-scrollbar-track { background: #f0f4f8 !important; }
+
+/* CredentialFlow step bar in DUO mode */
+[data-duo="true"] .px-4.pt-3 { background: transparent; }
+/* ──────────────────────────────────────────────────────────────────────────── */
